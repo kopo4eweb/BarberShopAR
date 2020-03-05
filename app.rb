@@ -3,7 +3,11 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
-set :database, "sqlite3:barbershop.db"
+set :database, {adapter: "sqlite3", database: "barbershop.db"}
+
+class YourApplication < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
+end
 
 class Client < ActiveRecord::Base
 end
