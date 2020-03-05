@@ -12,6 +12,9 @@ end
 class Client < ActiveRecord::Base
 end
 
+class Barber < ActiveRecord::Base
+end
+
 get '/' do
   erb 'Hello! $)'
 end
