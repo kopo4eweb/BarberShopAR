@@ -1,0 +1,16 @@
+<h2>Контакты</h2>
+<p>Вы можите оставить нам сообщение, мы обязательно ответим.</p>
+
+<form action="/contacts" method="POST">
+    <div class="form-group">
+        <label>Ваше email</label>
+        <input type="email" class="form-control" name="email" placeholder="Введите Ваше email" value="<%=@email%>">
+    </div>
+    
+    <div class="form-group">
+        <label>Ваше сообщение</label>
+        <textarea class="form-control" name="user_message" rows="3"><%=@user_message%></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>

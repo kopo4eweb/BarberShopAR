@@ -15,6 +15,9 @@ end
 class Barber < ActiveRecord::Base
 end
 
+class Contact < ActiveRecord::Base
+end
+
 def output_error validate, params
   validate.select {|key,_| params[key] == ''}.values.join(", ")
 end
@@ -59,4 +62,34 @@ post '/visit' do
 
     erb "Мастер #{@barber} ждем вас к #{@datestamp}."
 
+end
+
+get '/contacts' do
+  erb :contacts
+end
+
+post '/contacts' do
+
+  @error = nil
+
+  validate = {
+    :email => "Введите email",
+    :user_message => "Введите сообщение"
+  }
+
+  @email = params[:email]
+  @user_message= params[:user_message]
+
+  @error = output_error(validate, params)
+
+  if !@error.empty?
+    return erb :contacts
+  end
+  
+  @error = nil
+
+  Contact.create(:email => @email, :user_message => @user_message)
+
+  erb "Спасибо за обращение, мы вам обязательно вам ответим по этому адресу #{@email}."
+  
 end
