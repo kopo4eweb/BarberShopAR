@@ -19,3 +19,8 @@ get '/' do
   @barbers = Barber.all
   erb :index
 end
+
+get '/visit' do
+  @barbers = Barber.all
+  erb :visit
+end
