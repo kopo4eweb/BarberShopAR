@@ -88,3 +88,8 @@ post '/contacts' do
   erb "Спасибо за обращение, мы вам обязательно вам ответим по этому адресу #{@email}."
   
 end
+
+get '/clients' do
+  @clients = Client.all  
+  erb :clients
+end
