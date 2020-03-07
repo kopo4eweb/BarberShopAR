@@ -46,7 +46,8 @@ post '/visit' do
   if c.save
     erb "<h2>Спасибо, вы записались!</h2>"
   else
-    erb "<h2>Ошибка!</h2>"
+    @error = c.errors.full_messages.uniq.join(", ")
+    erb :visit
   end
 
 end
