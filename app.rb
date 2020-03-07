@@ -31,6 +31,11 @@ get '/' do
   erb :index
 end
 
+get '/barber/:id' do
+  @barber = Barber.find(params[:id])
+  erb :barber
+end
+
 get '/visit' do
   @barbers = Barber.all
   @c = Client.new 
