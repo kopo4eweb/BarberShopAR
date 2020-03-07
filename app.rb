@@ -33,6 +33,8 @@ end
 
 get '/visit' do
   @barbers = Barber.all
+  @c = Client.new 
+  
   erb :visit
 end
 
@@ -42,11 +44,11 @@ post '/visit' do
 
   @barbers = Barber.all
 
-  c = Client.new params[:client]
-  if c.save
+  @c = Client.new params[:client]
+  if @c.save
     erb "<h2>Спасибо, вы записались!</h2>"
   else
-    @error = c.errors.full_messages.uniq.join(", ")
+    @error = @c.errors.full_messages.uniq.join(", ")
     erb :visit
   end
 
